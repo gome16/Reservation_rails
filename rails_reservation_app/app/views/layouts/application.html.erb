@@ -5,12 +5,44 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+  <% if flash[:notice] %> 
+    <div class="notification is-info">
+      <p class="notice"><%= notice %></p>
+    </div>
+  <% end %>
+
+  <% if flash[:alart] %>
+    <div class="notification is denger">
+      <p class="alert"><%= alert %></p>
+    </div>
+  <% end %>
+  
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  
+  <nav class="navbar navbar-expand-sm navbar-dark bg-secondary ">
+    <%= link_to root_path, class: "navbar-item" do %>
+      <h1 class="text-light">旅サイト</h1>
+    <% end %>
+    <div class="collapse navbar-collapse justify-content-end">
+      <% if user_signed_in? %>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"btn btn-outline-light" %>
+      <% else %>
+        <div class="mr-2">
+          <%= link_to "ログイン", new_user_session_path, class:"btn btn-outline-light" %>
+        </div>
+        <%= link_to "新規登録", new_user_registration_path,class:"btn btn-outline-light" %>
+      <% end %>
+    </div>
+  </nav>
+
+  <%= yield %>
   </body>
 </html>
