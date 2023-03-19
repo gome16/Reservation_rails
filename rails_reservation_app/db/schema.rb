@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2023_03_16_080617) do
     t.datetime "remember_created_at"
     t.string "username"
     t.text "profie"
-    t.string "profie_image_id"
+    t.string "profile_image_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true

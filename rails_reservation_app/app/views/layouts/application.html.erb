@@ -24,24 +24,12 @@
     </div>
   <% end %>
   
+  
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
   
-  <nav class="navbar navbar-expand-sm navbar-dark bg-secondary ">
-    <%= link_to root_path, class: "navbar-item" do %>
-      <h1 class="text-light">旅サイト</h1>
-    <% end %>
-    <div class="collapse navbar-collapse justify-content-end">
-      <% if user_signed_in? %>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"btn btn-outline-light" %>
-      <% else %>
-        <div class="mr-2">
-          <%= link_to "ログイン", new_user_session_path, class:"btn btn-outline-light" %>
-        </div>
-        <%= link_to "新規登録", new_user_registration_path,class:"btn btn-outline-light" %>
-      <% end %>
-    </div>
-  </nav>
+
+  <%= render 'shared/haeder' %>
 
   <%= yield %>
   </body>

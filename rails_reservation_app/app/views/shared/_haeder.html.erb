@@ -1,0 +1,20 @@
+<header>
+  <nav class="navbar navbar-exand-sm navbar-dark bg-dark">
+    <%= link_to root_path, class: "navbar-item" do %>
+      <h2 class= "text-light">旅サイト</h2>
+    <% end %>
+    <div class="menu_container">
+
+      <% if user_signed_in? %> 
+        <%= attachment_image_tag @user, :profile_image, fallback: "no-userimage.png",size: "50x50" %>
+
+        <%= current_user.username %>
+
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-light" %>
+      <% else %>
+          <%= link_to "ログイン", new_user_session_path, class: "text-light"  %>
+        <%= link_to "新規登録", new_user_registration_path, class: "text-light" %>
+      <% end %>
+    </div>
+  </nav>
+</header>
