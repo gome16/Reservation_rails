@@ -7,9 +7,7 @@
 
       <% if user_signed_in? %> 
         <%= attachment_image_tag @user, :profile_image, fallback: "no-userimage.png",size: "50x50" %>
-
         <%= current_user.username %>
-
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-light" %>
       <% else %>
           <%= link_to "ログイン", new_user_session_path, class: "text-light"  %>
