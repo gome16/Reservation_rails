@@ -1,0 +1,28 @@
+<% @rooms.each do |room|%> 
+  <body>
+    <main>
+      <div class="album py-4 bg-light">
+        <div class="container">
+
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div class="col-5">
+              <div class="card shadow-sm">
+                <%= attachment_image_tag @room, :image,fallback: "no-image.png",size: "100x100"%>  
+
+                <div class="card-body">
+                  <div class="card-text">
+                    <p><%= room.roomname %></p>
+                    <p><%= room.address %></p>
+                    <p><%= room.detail %></p>  
+                    <p><%= room.price %></p>
+                    <%= link_to "詳細はこちら", room,class:"btn btn-outline-dark" %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+<% end %>

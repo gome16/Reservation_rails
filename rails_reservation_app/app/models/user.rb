@@ -3,5 +3,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  attachment :profile_image
+  attachment :profile_image 
+  has_many :rooms, dependent: :destroy
+  has_many :reservations, dependent: :destroy
+
+  def already_reservated?(user)
+    self.reservations.exists?(room_id: room.id)
+  end
 end

@@ -1,20 +1,33 @@
 <header>
-  <nav class="navbar navbar-exand-sm navbar-dark bg-dark">
-    <%= link_to root_path, class: "navbar-item" do %>
+  <nav class="navbar navbar-expand-sm  navbar-dark bg-dark">
+    <div class="navbar-brand">
       <h2 class= "text-light">旅サイト</h2>
-    <% end %>
-    <div class="menu_container">
+    </div>
 
+    <ul class="collapse navbar-collapse justify-content-end">
       <% if user_signed_in? %> 
-        <%= attachment_image_tag @user, :profile_image, fallback: "no-userimage.png",size: "50x50" %>
-
-        <%= current_user.username %>
-
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-light" %>
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" 
+            href="#" 
+            id="navbarDropdown" 
+            role="button" 
+            data-toggle="dropdown" 
+            aria-haspopup="true" 
+            aria-expanded="false">
+            <%= attachment_image_tag @user, :profile_image, fallback: "no-userimage.png",size: "40x40" %>               
+            <%= current_user.username %>
+          </a>  
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <%=link_to"施設の新規登録", new_room_path,class: "text-secondary", class:"dropdown-item"%>  
+            <%= link_to "アカウント確認", user_path(current_user), class:"dropdown-item" %>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-secondary", class:"dropdown-item" %>
+          </div>
+        </div>        
+           
       <% else %>
-          <%= link_to "ログイン", new_user_session_path, class: "text-light"  %>
+        <%= link_to "ログイン", new_user_session_path, class: "text-light"  %>
         <%= link_to "新規登録", new_user_registration_path, class: "text-light" %>
       <% end %>
-    </div>
+    </ul>
   </nav>
 </header>
