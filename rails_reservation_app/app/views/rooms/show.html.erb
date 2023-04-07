@@ -35,7 +35,23 @@
     </div>
   </div>
   
-  <%= link_to "予約", new_reservation_path(@room,@user)%>
+  <%= form_for @reservation, method: :post, url: confirm_reservations_path do |f| %>
+
+    <%= f.label :check_in %>
+    <%= f.text_field :check_in %>
+
+    <%= f.label :check_out %>
+    <%= f.text_field :check_out %>
+
+
+    <%= f.label :number %>
+    <%= f.text_field :number %>
+
+    <%= f.hidden_field :room_id%>
+
+    <%= f.submit "予約", class: 'btn btn-primary' %>
+
+  <% end %>
 
   <% if flash[:notice] %>
     <p class="notice"><%= flash[:notice] %></p>

@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   end
   get 'users/:account',controller: 'users', action: 'show'  
   resources :rooms 
-  resources :reservations
-
+    resources :reservations do
+      collection do
+        post :confirm
+      end
+  end  
+  
   root to: "home#index"
 end
