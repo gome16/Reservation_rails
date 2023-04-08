@@ -1,8 +1,25 @@
-<h1>111</h1>  
-<% @reservations.each do |reservation|%>
-  <p><%= reservation.check_in %></p>
-  <p><%= reservation.check_out %></p>
-  <p><%= reservation.number %></p>
-  
-<% end %>
+<h3>予約一覧</h3>
+<table>
+ <thead>
+    <tr>
+      <th class=col-5>開始日</th>
+      <th class=col-5>終了日</th>
+      <th class=col-5>人数</th>
+    </tr>
+ </thead>
+
+
+
+
+  <tbody>
+    <% @reservations.each do |reservation|%>
+      <tr>
+        <td class=col-5><%= reservation.check_in %></td>
+        <td class=col-5><%= reservation.check_out %></td>
+        <td class=col-5><%= reservation.number %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 
