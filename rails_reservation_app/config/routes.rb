@@ -8,15 +8,19 @@ Rails.application.routes.draw do
     member do
       get 'account'
     end
+    collection do
+      get 'search'
+    end
+    get 'users/:account',controller: 'users', action: 'show'
   end
-  get 'users/:account',controller: 'users', action: 'show'  
   resources :rooms do
     collection do
       get :'search'
-      get :'areasearch'
-    end
+    end  
+  
   end  
 
+  
 
   resources :reservations do
     collection do

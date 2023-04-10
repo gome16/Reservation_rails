@@ -1,0 +1,6 @@
+<%= search_form_for @q, url: search_users_path do |f| %>
+  <%= f.label :roomname_cont, '検索' %>
+  <%= f.search_field :roomname_cont %>
+  <%= f.submit '検索'%>
+<% end %>
+

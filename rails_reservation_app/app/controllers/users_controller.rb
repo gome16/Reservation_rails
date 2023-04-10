@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   def index
+    @q = Room.ransack(params[:q])
+    @rooms = @q.result(distinct: true)
   end
 
   def show
@@ -25,8 +27,13 @@ class UsersController < ApplicationController
   end
 
   private
+
   def user_params
     params.require(:user).permit(:profile_image, :username, :profile)
+  end
+
+  def search_params
+    params.require(:q).permit!
   end
 
 end
