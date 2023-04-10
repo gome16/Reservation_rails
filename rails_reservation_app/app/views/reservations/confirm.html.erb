@@ -1,5 +1,15 @@
 <div class="container-fuluid"> 
   <div class="container" >
+    <div class="mt-5">
+        <div class="row">
+          <div class="col-md-3">
+            <p>施設名</p>
+          </div>
+          <div class="col-md-5">
+            <%= @reservation.roomname %>
+          </div>
+        </div>
+      </div>
       <div class="mt-5">
         <div class="row">
           <div class="col-md-3">
@@ -40,6 +50,7 @@
     <%= f.hidden_field :check_in %>
     <%= f.hidden_field :check_out %>
     <%= f.hidden_field :number %>
+    <%= f.hidden_field :roomname %>
     <%= f.submit '登録する', class:'btn-warning mt-3 col-md-9'%>
   <% end %>
 

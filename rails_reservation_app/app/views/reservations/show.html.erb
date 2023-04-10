@@ -1,36 +1,24 @@
-<div class="container-fuluid"> 
-  <div class="container" >
-    <div class="mt-5">
-      <div class="row">
-          <p class="col-md-2">開始日</p>
-        <div class="col-md-5">
-          <%= @reservation.check_in%>
-        </div>
-      </div>
-    </div>
-   <div class="mt-5">
-      <div class="row">
-        <div class="col-md-3">
-          <p>終了日</p>
-        </div>
-        <div class="col-md-5">
-          <%= @reservation.check_out%>
-        </div>
-      </div>
-    </div>
-    <div class="mt-5">
-      <div class="row">
-        <div class="col-md-3">
-          <p>人数</p>
-        </div>
-        <div class="col-md-5">
-          <%= @reservation.number%>
-        </div>
-      </div>
-    </div>
-  <div class="mt-5">
-    <%= link_to "予約一覧",reservations_path()%>
-  </div>
-</div>
+<h3>予約一覧</h3>
+<table>
+ <thead>
+    <tr>
+      <th class=col-4>施設名</th>
+      <th class=col-4>開始日</th>
+      <th class=col-4>終了日</th>
+      <th class=col-4>人数</th>
+    </tr>
+ </thead>
 
-    
+  <tbody>
+    <% @reservations.each do |reservation|%>
+      <tr>
+        <td class=col-4><%= link_to reservation.roomname,room_path(@room) %></td>
+        <td class=col-4><%= reservation.check_in %></td>
+        <td class=col-4><%= reservation.check_out %></td>
+        <td class=col-4><%= reservation.number %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+

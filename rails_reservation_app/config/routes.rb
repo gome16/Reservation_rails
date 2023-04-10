@@ -10,11 +10,18 @@ Rails.application.routes.draw do
     end
   end
   get 'users/:account',controller: 'users', action: 'show'  
-  resources :rooms 
-    resources :reservations do
-      collection do
-        post :confirm
-      end
+  resources :rooms do
+    collection do
+      get :'search'
+      get :'areasearch'
+    end
+  end  
+
+
+  resources :reservations do
+    collection do
+      post :confirm
+    end
   end  
   
   root to: "home#index"

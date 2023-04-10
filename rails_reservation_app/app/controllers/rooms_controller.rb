@@ -29,10 +29,22 @@ class RoomsController < ApplicationController
 
   def update
     @room = Room.find(params[:id])
-    if @room.update(params.require(:room).permit(:roomname, :detail,  :price, :address, :image))
+    if @room.update(params.require(:room).permit(:roomname, :detail, :price, :address, :image))
     redirect_to room_path(@room)
     else
       render"edit"
     end
   end
+
+  def search 
+    if params[:area].present?
+      @rooms = Room.search_area(params[:area])
+      render'index'
+    elsif params[:keyword].present?
+      @rooms = Room.search(params[:keyword])
+      render'index'
+    else
+    end
+  end
 end
+

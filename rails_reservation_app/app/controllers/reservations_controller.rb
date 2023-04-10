@@ -1,10 +1,10 @@
 class ReservationsController < ApplicationController
   def index
-    @reservations = Reservation.all
   end
 
   def show
-    @reservation = Reservation.find(params[:id])
+    @reservations = Reservation.all
+    @room = Room.find_by(params[:id])
   end
 
   def new
@@ -24,7 +24,7 @@ class ReservationsController < ApplicationController
   private
 
   def reservation_params
-    params.require(:reservation).permit(:check_in, :check_out, :number, :room_id, :user_id)
+    params.require(:reservation).permit(:check_in, :check_out, :number, :room_id, :user_id, :roomname)
   end
   
 end
