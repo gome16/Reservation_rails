@@ -1,4 +1,7 @@
 class ReservationsController < ApplicationController
+  protect_from_forgery
+  before_action :authenticate_user!
+
   def index
   end
 
@@ -12,6 +15,7 @@ class ReservationsController < ApplicationController
 
   def confirm
     @reservation = Reservation.new(reservation_params)
+    binding.pry
     render template: "rooms/show" if @reservation.invalid?
   end
 

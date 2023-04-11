@@ -1,4 +1,7 @@
 class RoomsController < ApplicationController
+  protect_from_forgery
+  before_action :authenticate_user!, except: [:index,:show]
+
   def index
     @rooms = Room.all
   end
@@ -9,7 +12,7 @@ class RoomsController < ApplicationController
 
   def create
     @room = Room.new(params.require(:room).permit(:roomname, :detail, :price,:address, :image))
-    @room.user_id = current_user.id
+    @room.id = current_user.id
     if @room.save
       flash[:notice] = "新規登録しました"
       redirect_to room_path(@room)
@@ -25,6 +28,9 @@ class RoomsController < ApplicationController
 
   def edit
     @room = Room.find(params[:id])
+    if @room.user != current_user
+      redirect_to room_path, alert: '不正なアクセスです'
+    end
   end
 
   def update

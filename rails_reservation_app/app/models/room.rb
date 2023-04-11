@@ -3,6 +3,13 @@ class Room < ApplicationRecord
   has_many :reservations, dependent: :destroy
   attachment :image
 
+  with_options presence: true do
+    validates :roomname
+    validates :detail
+    validates :price
+    validates :address
+  end
+
   def self.search_area(area)
      where(["address like?", "%#{area}%"])  
   end
@@ -19,6 +26,5 @@ class Room < ApplicationRecord
   def self.ransackable_attributes(auth_object = nil)
     ["address", "address", "price", "detail"]
   end
-
 
 end
