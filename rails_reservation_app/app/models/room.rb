@@ -1,5 +1,5 @@
 class Room < ApplicationRecord
-  belongs_to :user
+  belongs_to :user,optional: true
   has_many :reservations, dependent: :destroy
   attachment :image
 
@@ -9,6 +9,8 @@ class Room < ApplicationRecord
     validates :price
     validates :address
   end
+  validates :price,numericality:true
+
 
   def self.search_area(area)
      where(["address like?", "%#{area}%"])  

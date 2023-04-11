@@ -13,9 +13,6 @@
         <div class="row">
           <%= f.label :roomname,"施設名", class:"mr-3" %>
           <%= f.text_field :roomname,class:"ml-3"%>
-          <% if @room.errors.include?(:email) %>
-            <p style="color: red;"><%= @room.errors.full_messages_for(:email).first %>
-          <% end %>
         </div>
       </div>
 
@@ -23,9 +20,6 @@
         <div class="row">
           <%= f.label :detail,"施設詳細",class:"mr-3"%>
           <%= f.text_area :detail %>
-          <% if @room.errors.include?(:password) %>
-            <p style="color: red;"><%= @room.errors.full_messages_for(:password).first %>
-          <% end %>
         </div>
       </div>
 
@@ -33,9 +27,6 @@
         <div class="row">
           <%= f.label :price,"料金",class:"mr-5"%><br />
           <%= f.text_field :price %>
-          <% if @room.errors.include?(:password_confirmation) %>
-            <p style="color: red;"><%= @room.errors.full_messages_for(:password_confirmation).first %>
-          <% end %>
         </div>
       </div>
     
@@ -43,9 +34,6 @@
         <div class="row">
           <%= f.label :address,"住所",class:"mr-5"%> 
           <%= f.text_field :address %>
-          <% if @room.errors.include?(:current_password) %>
-            <p style="color: red;"><%= @room.errors.full_messages_for(:current_password).first %>
-          <% end %>
         </div>
       </div>
 

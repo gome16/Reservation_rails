@@ -10,4 +10,5 @@ class User < ApplicationRecord
   def already_reservated?(user)
     self.reservations.exists?(room_id: room.id)
   end
+
 end

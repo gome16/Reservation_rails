@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:username])
   end
 
+  def set_q_for_room
+    @q = Room.ransack(params[:q])
+  end
+
 end

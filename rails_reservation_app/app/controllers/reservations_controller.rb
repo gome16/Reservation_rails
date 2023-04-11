@@ -15,7 +15,7 @@ class ReservationsController < ApplicationController
 
   def confirm
     @reservation = Reservation.new(reservation_params)
-    binding.pry
+    @room = Room.find_by(params[:id])
     render template: "rooms/show" if @reservation.invalid?
   end
 

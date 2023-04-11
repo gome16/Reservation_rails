@@ -1,10 +1,13 @@
 class UsersController < ApplicationController
   protect_from_forgery
   before_action :authenticate_user!,except: [:index,:show]
+  before_action :search
+  def search
+    @q = Room.ransack(params[:q])
+  end
 
   def index
-    @search = Room.search(params[:q])
-    @products = @search.result
+    @Rooms = @q.result(distict: true)
   end
 
   def show
@@ -31,6 +34,8 @@ class UsersController < ApplicationController
       render "edit"
     end
   end
+
+  
 
   private
 

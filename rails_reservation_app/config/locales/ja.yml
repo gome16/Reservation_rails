@@ -181,3 +181,13 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+ 
+  attributes:
+    roomname: 施設名
+    price: 価格
+    address: 住所
+    detail: 詳細
+    check_in: 開始日
+    check_out: 終了日
+    number: 人数
+    User: 名前

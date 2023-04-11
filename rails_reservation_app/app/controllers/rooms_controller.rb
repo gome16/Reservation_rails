@@ -28,8 +28,8 @@ class RoomsController < ApplicationController
 
   def edit
     @room = Room.find(params[:id])
-    if @room.user != current_user
-      redirect_to room_path, alert: '不正なアクセスです'
+    if @room != current_user
+      redirect_to room_path, alert: '編集権限がありません'
     end
   end
 
