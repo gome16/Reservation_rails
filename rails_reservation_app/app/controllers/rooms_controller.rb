@@ -11,8 +11,8 @@ class RoomsController < ApplicationController
   end
 
   def create
-    @room = Room.new(params.require(:room).permit(:roomname, :detail, :price,:address, :image))
-    @room.id = current_user.id
+    @room = Room.new(room_params)
+    @room.user_id = current_user.id
     if @room.save
       flash[:notice] = "新規登録しました"
       redirect_to room_path(@room)
@@ -28,7 +28,7 @@ class RoomsController < ApplicationController
 
   def edit
     @room = Room.find(params[:id])
-    if @room != current_user
+    if @room.user_id != current_user.id
       redirect_to room_path, alert: '編集権限がありません'
     end
   end
@@ -50,7 +50,13 @@ class RoomsController < ApplicationController
       @rooms = Room.search(params[:keyword])
       render'index'
     else
-    end
+    end  
   end
+
+  private
+  def room_params
+    params.require(:room).permit(:roomname, :detail, :price, :address, :image)
+  end
+
 end
 

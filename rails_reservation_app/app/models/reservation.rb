@@ -11,4 +11,13 @@ class Reservation < ApplicationRecord
   end
   validates :number,numericality:true
 
+  validate :start_end_check
+
+  def start_end_check
+    unless check_in == nil
+    errors.add(:check_out, "は開始日より後のものを選択してください") unless
+    self.check_in < self.check_out
+    end
+  end
+
 end

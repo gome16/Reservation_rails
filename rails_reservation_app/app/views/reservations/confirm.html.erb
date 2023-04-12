@@ -42,8 +42,6 @@
       </div>
   </div>
 
-
-
   <%= form_with(model:@reservation, method: :post, url: reservations_path) do |f|%>
     <%= f.hidden_field :user_id %>
     <%= f.hidden_field :room_id %>
@@ -54,5 +52,4 @@
     <%= f.submit '登録する', class:'btn-warning mt-3 col-md-9'%>
   <% end %>
 
-  <%= link_to "戻る", :back,class:"btn btn-outline-dark  mt-3 col-md-9" %>
-</div>
+

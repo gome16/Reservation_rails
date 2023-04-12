@@ -11,12 +11,15 @@ class ReservationsController < ApplicationController
   end
 
   def new
+    @reservation = Reservation.new
   end
 
   def confirm
-    @reservation = Reservation.new(reservation_params)
     @room = Room.find_by(params[:id])
-    render template: "rooms/show" if @reservation.invalid?
+    @reservation = Reservation.new(reservation_params)
+    if @reservation.invalid?
+      render template: "rooms/show"
+    end 
   end
 
   def create
