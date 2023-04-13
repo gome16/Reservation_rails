@@ -6,7 +6,7 @@ class ReservationsController < ApplicationController
   end
 
   def show
-    @reservations = Reservation.all
+    @reservations = Reservation.where(user_id: current_user.id)
   end
 
   def new
@@ -25,7 +25,6 @@ class ReservationsController < ApplicationController
 
   def create
     @reservation = Reservation.new(reservation_params)
-    binding.pry
     render template: "rooms/show"  and return if params[:back] || !@reservation.save
     redirect_to @reservation
   end 

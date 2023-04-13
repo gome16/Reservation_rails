@@ -21,7 +21,8 @@
                     <p><%= room.roomname %></p>
                     <p><%= room.address %></p>
                     <p><%= room.detail %></p>  
-                    <p><%= room.price %></p>
+                    <p>¥<%= room.price %>/日</p>
+                    <p><%= room.created_at.to_s(:creteatime_jp) %></p>
                     <%= link_to "詳細はこちら", room,class:"btn btn-outline-dark" %>
                   </div>
                 </div>

@@ -40,6 +40,16 @@
           </div>
         </div>
       </div>
+      <div class="mt-5">
+        <div class="row">
+          <div class="col-md-3">
+            <p>支払い金額</p>
+          </div>
+          <div class="col-md-5">
+            <%= @reservation.total%>
+          </div>
+        </div>
+      </div>
   </div>
 
   <%= form_with(model:@reservation, method: :post, url: reservations_path) do |f|%>
@@ -49,6 +59,9 @@
     <%= f.hidden_field :check_out %>
     <%= f.hidden_field :number %>
     <%= f.hidden_field :roomname %>
+    <%= f.hidden_field :price %>
+    <%= f.hidden_field :detail %>
+    <%= f.hidden_field :address %>
     <%= f.submit '登録する', class:'btn-warning mt-3 col-md-9'%>
   <% end %>
 

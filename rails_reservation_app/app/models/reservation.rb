@@ -9,7 +9,8 @@ class Reservation < ApplicationRecord
     validates :check_out
     validates :number
   end
-  validates :number,numericality:true
+  
+  validates :number,numericality: {only_integer: true,greater_than_to: 0}
 
   validate :start_end_check
 
@@ -18,6 +19,10 @@ class Reservation < ApplicationRecord
     errors.add(:check_out, "は開始日より後のものを選択してください") unless
     self.check_in < self.check_out
     end
+  end
+
+  def total
+    (self.check_out - self.check_in).to_i * self.number.to_i * self.price.to_i
   end
 
 end
