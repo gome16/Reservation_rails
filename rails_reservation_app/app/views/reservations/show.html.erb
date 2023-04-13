@@ -3,6 +3,9 @@
  <thead>
     <tr>
       <th class=col-4>施設名</th>
+      <th class=col-4>詳細</th>
+      <th class=col-4>住所</th>
+      <th class=col-4>料金</th>
       <th class=col-4>開始日</th>
       <th class=col-4>終了日</th>
       <th class=col-4>人数</th>
@@ -13,9 +16,15 @@
     <% @reservations.each do |reservation|%>
         <tr>
           <td class=col-4><%= link_to reservation.roomname, room_path(reservation.room_id) %></td>
+          <td class=col-4><%= reservation.detail %></td>
+          <td class=col-4><%= reservation.address %></td>
+          <td class=col-4><%= reservation.price %></td>
+          <td class=col-4><%= reservation.check_in %></td>
           <td class=col-4><%= reservation.check_in %></td>
           <td class=col-4><%= reservation.check_out %></td>
           <td class=col-4><%= reservation.number %></td>
+          <td class=col-4><%= reservation.created_at %></td>
+
         </tr>
     <% end %>
   </tbody>

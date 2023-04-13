@@ -25,6 +25,7 @@ class ReservationsController < ApplicationController
 
   def create
     @reservation = Reservation.new(reservation_params)
+    binding.pry
     render template: "rooms/show"  and return if params[:back] || !@reservation.save
     redirect_to @reservation
   end 
@@ -32,7 +33,7 @@ class ReservationsController < ApplicationController
   private
 
   def reservation_params
-    params.require(:reservation).permit(:check_in, :check_out, :number, :room_id, :user_id, :roomname)
+    params.require(:reservation).permit(:check_in, :check_out, :number, :room_id, :user_id, :roomname, :price, :detail, :address, :created_at)
   end
   
 end
