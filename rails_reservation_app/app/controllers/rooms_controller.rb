@@ -3,7 +3,13 @@ class RoomsController < ApplicationController
   before_action :authenticate_user!, except: [:index,:show]
 
   def index
-    @rooms = Room.all
+    @q = Room.ransack(params[:q])
+    @rooms = @q.result(distinct: true)
+    if @rooms.count > 0
+      flash.now[:alert] = "#{@rooms.count}件の検索結果"
+    else
+      flash.now[:alert] = "検索結果が見つかりませんでした"
+    end
   end
 
   def new
@@ -45,10 +51,22 @@ class RoomsController < ApplicationController
   def search 
     if params[:area].present?
       @rooms = Room.search_area(params[:area])
-      render'index'
+      if @rooms.count > 0
+        flash.now[:alert] = "#{@rooms.count}件の検索結果"
+        render'index'
+      else
+        flash.now[:alert] = "検索結果が見つかりませんでした"
+        render'index'
+      end
     elsif params[:keyword].present?
       @rooms = Room.search(params[:keyword])
-      render'index'
+      if @rooms.count > 0
+        flash.now[:alert] = "#{@rooms.count}件の検索結果"
+        render'index'
+      else
+        flash.now[:alert] = "検索結果が見つかりませんでした"
+        render'index'
+      end
     else
     end  
   end

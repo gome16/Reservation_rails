@@ -1,13 +1,9 @@
 class UsersController < ApplicationController
   protect_from_forgery
   before_action :authenticate_user!,except: [:index,:show]
-  before_action :search
-  def search
-    @q = Room.ransack(params[:q])
-  end
 
   def index
-    @Rooms = @q.result(distict: true)
+   @q = Room.ransack(params[:q])
   end
 
   def show
@@ -35,16 +31,14 @@ class UsersController < ApplicationController
     end
   end
 
-  
+  def search
+    render template: "rooms/index"
+  end
 
   private
 
   def user_params
     params.require(:user).permit(:profile_image, :username, :profile)
-  end
-
-  def search_params
-    params.require(:q).permit!
   end
 
 end

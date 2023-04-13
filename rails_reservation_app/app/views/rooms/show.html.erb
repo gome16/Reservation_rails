@@ -38,13 +38,12 @@
       <p class="notice"><%= flash[:notice] %></p>
     <% end %>
 
-     <% if @reservation.errors.any? %>
-        <%= @reservation.errors.full_messages.each do |message|%>
-        <% end %>
-    <% end %>
+     
     
     <h2 class="mt-5">施設を予約</h2>
     <%= form_with(model:@reservation, method: :post, url: confirm_reservations_path(@reservation)) do |f| %>
+    <% if @reservation.errors.any? %>
+    <% end %>
       <%= f.hidden_field :room_id, :value => @room.id %>
       <%= f.hidden_field :user_id, :value => current_user.id %>
       <%= f.hidden_field :roomname, :value => @room.roomname %>
@@ -53,12 +52,18 @@
           <div class="form-group">     
             <%= f.label :check_in,"開始日" %>
             <%= f.date_field :check_in%>
+            <% if @reservation.errors.include?(:check_in) %>
+              <p style="color: red;"><%= @reservation.errors.full_messages_for(:check_in).first %>
+            <% end %>
           </div>
         </div>
         <div class="col-3">
           <div class="form-group"> 
             <%= f.label :check_out,"終了日" %>
             <%= f.date_field :check_out %>
+            <% if @reservation.errors.include?(:check_out) %>
+              <p style="color: red;"><%= @reservation.errors.full_messages_for(:check_out).first %>
+            <% end %>
           </div>
         </div>
 
@@ -66,6 +71,9 @@
           <div class="form-group">
             <%= f.label :number,"人数" %>
             <%= f.text_field :number %>
+            <% if @reservation.errors.include?(:number) %>
+              <p style="color: red;"><%= @reservation.errors.full_messages_for(:number).first %>
+            <% end %>
           </div>
         </div>
 

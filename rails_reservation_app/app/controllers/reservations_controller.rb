@@ -7,7 +7,6 @@ class ReservationsController < ApplicationController
 
   def show
     @reservations = Reservation.all
-    @room = Room.find_by(params[:id])
   end
 
   def new
@@ -15,11 +14,13 @@ class ReservationsController < ApplicationController
   end
 
   def confirm
-    @room = Room.find_by(params[:id])
+    @room = Room.find(params[:reservation][:room_id])
     @reservation = Reservation.new(reservation_params)
     if @reservation.invalid?
       render template: "rooms/show"
-    end 
+      return
+    end
+   
   end
 
   def create

@@ -1,7 +1,7 @@
 <header>
   <nav class="navbar navbar-expand-sm  navbar-dark bg-dark">
     <div class="navbar-brand">
-      <h2 class= "text-light">旅サイト</h2>
+      <h2 class= "text-light"><%= link_to "旅サイト",users_path,class:'text-secondary'%></h2>
     </div>
 
     <ul class="collapse navbar-collapse justify-content-end">
@@ -20,7 +20,9 @@
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%=link_to"施設の新規登録", new_room_path,class: "text-secondary", class:"dropdown-item"%>  
             <%= link_to "アカウント確認", user_path(current_user), class:"dropdown-item" %>
+            <%= link_to "予約情報確認",  reservation_path(current_user), class:"dropdown-item" %>
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-secondary", class:"dropdown-item" %>
+
           </div>
         </div>        
            

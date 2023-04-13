@@ -11,12 +11,12 @@
 
   <tbody>
     <% @reservations.each do |reservation|%>
-      <tr>
-        <td class=col-4><%= link_to reservation.roomname,room_path(@room.id) %></td>
-        <td class=col-4><%= reservation.check_in %></td>
-        <td class=col-4><%= reservation.check_out %></td>
-        <td class=col-4><%= reservation.number %></td>
-      </tr>
+        <tr>
+          <td class=col-4><%= link_to reservation.roomname, room_path(reservation.room_id) %></td>
+          <td class=col-4><%= reservation.check_in %></td>
+          <td class=col-4><%= reservation.check_out %></td>
+          <td class=col-4><%= reservation.number %></td>
+        </tr>
     <% end %>
   </tbody>
 </table>
