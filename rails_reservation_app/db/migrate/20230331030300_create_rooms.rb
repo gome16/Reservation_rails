@@ -7,6 +7,7 @@ class CreateRooms < ActiveRecord::Migration[6.1]
       t.string :address
       t.text :detail
       t.string :image
+      t.string :image_cache
 
       t.timestamps
     end

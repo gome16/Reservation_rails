@@ -7,6 +7,7 @@ class CreateReservations < ActiveRecord::Migration[6.1]
       t.integer :check_out
       t.integer :number
       t.string  :image
+      t.string  :image_cache
 
       t.timestamps
     end

@@ -52,5 +52,5 @@ class ImageUploader < CarrierWave::Uploader::Base
     "no-image.png"
   end
   include CarrierWave::MiniMagick
-  process resize_to_fit: [600, 400]
+  process resize_to_fit: [400, 200]
 end

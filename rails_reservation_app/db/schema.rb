@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2023_04_13_095302) do
     t.date "check_out"
     t.integer "number"
     t.string "image"
+    t.string "image_cache"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "roomname"
@@ -34,6 +35,7 @@ ActiveRecord::Schema.define(version: 2023_04_13_095302) do
     t.string "address"
     t.text "detail"
     t.string "image"
+    t.string "image_cache"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

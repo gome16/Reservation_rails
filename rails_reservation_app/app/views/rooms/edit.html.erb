@@ -39,6 +39,7 @@
         <div class="row">
           <%= f.label :image, "施設画像", class:"col-md-4" %>
           <%=f.file_field :image %>
+          <%= f.hidden_field :image_cache %>
         </div>
       </div>
 
