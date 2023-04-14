@@ -2,6 +2,7 @@
 <table>
  <thead>
     <tr>
+      <th></th>
       <th class=col-4>施設名</th>
       <th class=col-4>詳細</th>
       <th class=col-4>住所</th>
@@ -16,6 +17,7 @@
   <tbody>
       <% @reservations.each do |reservation|%>
         <tr>
+          <%= attachment_image_tag reservation, :image,fallback: "no-image.png",class:"col-4">%>      
           <td class=col-4><%= link_to reservation.roomname, room_path(reservation.room_id) %></td>
           <td class=col-4><%= reservation.detail %></td>
           <td class=col-4><%= reservation.address %></td>
