@@ -3,7 +3,6 @@ class UsersController < ApplicationController
   before_action :authenticate_user!,except: [:index,:show]
 
   def index
-   @q = Room.ransack(params[:q])
   end
 
   def show
@@ -29,10 +28,6 @@ class UsersController < ApplicationController
     else
       render "edit"
     end
-  end
-
-  def search
-    render template: "rooms/index"
   end
 
   private

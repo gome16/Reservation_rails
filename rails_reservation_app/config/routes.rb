@@ -16,8 +16,8 @@ Rails.application.routes.draw do
   resources :rooms do
     collection do
       get :'search'
-    end  
-  
+      get :'top'
+    end
   end  
 
   
@@ -28,5 +28,5 @@ Rails.application.routes.draw do
     end
   end  
   
-  root to: "users#index"
+  root to: "rooms#top"
 end

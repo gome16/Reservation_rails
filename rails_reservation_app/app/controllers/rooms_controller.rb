@@ -71,6 +71,10 @@ class RoomsController < ApplicationController
     end  
   end
 
+  def top
+    @q = Room.ransack(params[:q])
+  end
+
   private
   def room_params
     params.require(:room).permit(:roomname, :detail, :price, :address, :image)
