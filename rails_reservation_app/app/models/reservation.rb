@@ -2,7 +2,7 @@ class Reservation < ApplicationRecord
   belongs_to :user
   belongs_to :room
 
-  attachment :image
+  mount_uploader :image, ImageUploader
   
   with_options presence: true do
     validates :user_id

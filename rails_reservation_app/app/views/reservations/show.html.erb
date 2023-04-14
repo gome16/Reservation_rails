@@ -3,12 +3,12 @@
  <thead>
     <tr>
       <th></th>
-      <th class=col-4>施設名</th>
-      <th class=col-4>詳細</th>
-      <th class=col-4>住所</th>
-      <th class=col-4>料金</th>
-      <th class=col-4>開始日</th>
-      <th class=col-4>終了日</th>
+      <th class=col-3>施設名</th>
+      <th class=col-2>詳細</th>
+      <th class=col-2>住所</th>
+      <th class=col-2>料金</th>
+      <th class=col-3>開始日</th>
+      <th class=col-3>終了日</th>
       <th class=col-4>人数</th>
       <th class=col-4>予約確定日</th>
     </tr>
@@ -17,13 +17,13 @@
   <tbody>
       <% @reservations.each do |reservation|%>
         <tr>
-          <%= attachment_image_tag reservation, :image,fallback: "no-image.png",class:"col-4">%>      
-          <td class=col-4><%= link_to reservation.roomname, room_path(reservation.room_id) %></td>
-          <td class=col-4><%= reservation.detail %></td>
-          <td class=col-4><%= reservation.address %></td>
-          <td class=col-4>¥<%= reservation.total %></td>
-          <td class=col-4><%= reservation.check_in.to_s(:creteatime_jp) %></td>
-          <td class=col-4><%= reservation.check_out.to_s(:creteatime_jp) %></td>
+          <td><%= image_tag reservation.image.to_s, size:"50x50"%></td>   
+          <td class="col-3"><%= link_to reservation.roomname, room_path(reservation.room_id) %></td>
+          <td class=col-2><%= reservation.detail %></td>
+          <td class=col-2><%= reservation.address %></td>
+          <td class=col-2>¥<%= reservation.total %></td>
+          <td class=col-3><%= reservation.check_in.to_s(:creteatime_jp) %></td>
+          <td class=col-3><%= reservation.check_out.to_s(:creteatime_jp) %></td>
           <td class=col-4><%= reservation.number %></td>
           <td class=col-4><%= reservation.created_at.to_s(:datetime_jp) %></td>
         </tr>

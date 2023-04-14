@@ -15,7 +15,7 @@
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             <div class="col-5">
               <div class="card shadow-sm">
-                <%= attachment_image_tag room, :image,fallback: "no-image.png",class:"mt-3 col-12"%>       
+                <%= image_tag room.image.to_s %>
                 <div class="card-body">
                   <div class="card-text">
                     <p><%= room.roomname %></p>

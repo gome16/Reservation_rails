@@ -8,7 +8,7 @@
       </div>
     <div class="mt-5">
       <div class="row">
-        <%= attachment_image_tag @room, :image,fallback: "no-image.png",class:"mt-3 col-12"%>               
+        <%= image_tag @room.image.to_s %>
       </div>
     </div>
     <div class="mt-5">
@@ -50,7 +50,7 @@
       <%= f.hidden_field :price, :value => @room.price %>
       <%= f.hidden_field :detail, :value => @room.detail %>
       <%= f.hidden_field :address, :value => @room.address %>
-      <%= f.hidden_field :image, :value => @room.image %>
+      <%= f.hidden_field_tag :"cache[image]", @room.image %>
       <div class="row">
         <div class="col-3">
           <div class="form-group">     

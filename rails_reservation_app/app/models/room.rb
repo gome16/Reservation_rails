@@ -1,7 +1,8 @@
 class Room < ApplicationRecord
   belongs_to :user,optional: true
   has_many :reservations, dependent: :destroy
-  attachment :image
+  
+  mount_uploader :image, ImageUploader
 
   with_options presence: true do
     validates :roomname
