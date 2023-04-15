@@ -1,4 +1,4 @@
-<%= form_for @room do |f| %>
+<%= form_with model: @room do |f| %>
   <div class="container">
     <% if @room.errors.any? %>
         <%= @room.errors.full_messages.each do |message|%>

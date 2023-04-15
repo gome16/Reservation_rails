@@ -2,7 +2,7 @@
   <div class="container" >
       <div class="row">
         <%= link_to "戻る", :back,class:"mt-3 col-9" %>
-          <% if @room.user_id == current_user.id%>
+          <% if @room.user_id == current_user&.id%>
             <%= link_to "編集", edit_room_path(@room), class:"mt-3 col-2" %>
           <% end %>
       </div>
@@ -45,7 +45,7 @@
     <% if @reservation.errors.any? %>
     <% end %>
       <%= f.hidden_field :room_id, :value => @room.id %>
-      <%= f.hidden_field :user_id, :value => current_user.id %>
+      <%= f.hidden_field :user_id, :value => current_user&.id %>
       <%= f.hidden_field :roomname, :value => @room.roomname %>
       <%= f.hidden_field :price, :value => @room.price %>
       <%= f.hidden_field :detail, :value => @room.detail %>

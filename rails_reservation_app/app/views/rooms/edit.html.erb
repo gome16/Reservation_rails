@@ -1,14 +1,14 @@
 <div class= container> 
- <% if @room.errors.any? %>
-        <%= @room.errors.full_messages.each do |message|%>
-        <% end %>
+    <% if @room.errors.any? %>
+      <%= @room.errors.full_messages.each do |message|%>
+      <% end %>
     <% end %>
   <div class="mb-5"> 
     <h1>施設情報編集</h1>
   </div>
   <section class="section">
     <div class="container">
-      <%= form_for @room do |f| %>
+      <%= form_with model: @room, url: room_path(@room),local: true do |f| %>
       <div class="mb-5">
         <div class="row">
           <%= f.label :roomname, "施設名", class:"col-md-4" %>
@@ -38,8 +38,8 @@
       <div class="mb-5">
         <div class="row">
           <%= f.label :image, "施設画像", class:"col-md-4" %>
-          <%=f.file_field :image %>
-          <%= f.hidden_field :image_cache %>
+          <%= f.file_field :image %>
+          <%= f.hidden_field_tag :image_cache %>
         </div>
       </div>
 

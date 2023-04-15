@@ -1,8 +1,9 @@
 class RoomsController < ApplicationController
   protect_from_forgery
-  before_action :authenticate_user!, except: [:index,:show]
-
+  before_action :authenticate_user!, except: [:index,:show,:top,:search ]
+  helper_method :current_user
   def index
+    @rooms = Room.all
     @q = Room.ransack(params[:q])
     @rooms = @q.result(distinct: true)
     if @rooms.count > 0
@@ -51,7 +52,7 @@ class RoomsController < ApplicationController
   def search 
     if params[:area].present?
       @rooms = Room.search_area(params[:area])
-      if @rooms.count > 0
+      if @rooms.count > 1
         flash.now[:alert] = "#{@rooms.count}件の検索結果"
         render'index'
       else
@@ -68,12 +69,16 @@ class RoomsController < ApplicationController
         render'index'
       end
     else
+      @rooms = Room.all
+      flash.now[:alert] = "#{@rooms.count}件の検索結果"
+        render'index'
     end  
   end
 
   def top
     @q = Room.ransack(params[:q])
   end
+
 
   private
   def room_params
