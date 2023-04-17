@@ -14,19 +14,19 @@
     </tr>
  </thead>
 
-  <tbody>
+  <tbody>    
+    <tr> 
       <% @reservations.each do |reservation|%>
-        <tr>
-          <td><%= image_tag reservation.image.to_s, size:"50x50"%></td>   
-          <td class="col-3"><%= link_to reservation.roomname, room_path(reservation.room_id) %></td>
-          <td class=col-2><%= reservation.detail %></td>
-          <td class=col-2><%= reservation.address %></td>
-          <td class=col-2>¥<%= reservation.total %></td>
-          <td class=col-3><%= reservation.check_in.to_s(:creteatime_jp) %></td>
-          <td class=col-3><%= reservation.check_out.to_s(:creteatime_jp) %></td>
-          <td class=col-4><%= reservation.number %></td>
-          <td class=col-4><%= reservation.created_at.to_s(:datetime_jp) %></td>
-        </tr>
+      <td><%= image_tag reservation.room.image.to_s, size:"50x50"%></td> 
+      <td class="col-3"><%= link_to reservation.room.roomname, room_path(reservation.room_id) %></td>
+      <td class=col-2><%= reservation.room.detail %></td>
+      <td class=col-2><%= reservation.room.address %></td>
+      <td class=col-2>¥<%= reservation.total %></td>
+      <td class=col-3><%= reservation.check_in.to_s(:creteatime_jp) %></td>
+      <td class=col-3><%= reservation.check_out.to_s(:creteatime_jp) %></td>
+      <td class=col-4><%= reservation.number %></td>
+      <td class=col-4><%= reservation.created_at.to_s(:datetime_jp) %></td>
+    </tr>  
       <% end %>
   </tbody>
 </table>
