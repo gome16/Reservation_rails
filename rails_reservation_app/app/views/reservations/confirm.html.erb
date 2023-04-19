@@ -6,7 +6,7 @@
             <p>施設名</p>
           </div>
           <div class="col-md-5">
-            <%= @reservation.roomname %>
+            <%= @reservation.room.roomname %>
           </div>
         </div>
       </div>
@@ -46,7 +46,7 @@
             <p>支払い金額</p>
           </div>
           <div class="col-md-5">
-            <%= @reservation.total%>
+            <p>¥<%= @reservation.total %></p>
           </div>
         </div>
       </div>
@@ -58,6 +58,7 @@
     <%= f.hidden_field :check_in %>
     <%= f.hidden_field :check_out %>
     <%= f.hidden_field :number %>
+    <%= f.hidden_field :price %>
     <%= f.submit '登録する', class:'btn-warning mt-3 col-md-9'%>
   <% end %>
 

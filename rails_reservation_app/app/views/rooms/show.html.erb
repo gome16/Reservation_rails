@@ -53,6 +53,7 @@
     <% end %>
       <%= f.hidden_field :room_id, :value => @room.id %>
       <%= f.hidden_field :user_id, :value => current_user&.id %>
+      <%= f.hidden_field :price, :value => @room.price %>
       <div class="row">
         <div class="col-3">
           <div class="form-group">     
