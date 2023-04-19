@@ -79,10 +79,15 @@ class RoomsController < ApplicationController
     @q = Room.ransack(params[:q])
   end
 
+  def allroom
+    @rooms = Room.where(user_id: current_user.id).order("created_at DESC")
+    render'index'
+  end
+
 
   private
   def room_params
-    params.require(:room).permit(:roomname, :detail, :price, :address, :image, :image_cache)
+    params.require(:room).permit(:user_id, :roomname, :detail, :price, :address, :image, :image_cache)
   end
 
 end
